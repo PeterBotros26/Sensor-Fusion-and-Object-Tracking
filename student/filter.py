@@ -73,7 +73,7 @@ class Filter:
 
         
         x = self.F() * track.x  # state prediction
-        P = self.F() * track.P * F.transpose() + self.Q()  # covariance prediction
+        P = self.F() * track.P * self.F().transpose() + self.Q()  # covariance prediction
 
         track.set_x(x)
         track.set_P(P)
