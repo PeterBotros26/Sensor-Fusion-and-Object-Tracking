@@ -124,7 +124,7 @@ class Trackmanagement:
         
         for i in unassigned_tracks:
             track = self.track_list[i]
-            if (track.state == 'confirmed' and track.score <= params.delete_threshold) or (track.state == "initialized" and track.score < 0.2) or (track.state == "tentative" and track.score < 0.3) or (track.P[0,0]>params.max_P) or (track.P[1,1]>params.max_P):
+            if (track.state == 'confirmed' and track.score <= params.delete_threshold) or ((track.state == 'initialized' or track.state == 'tentative') and (track.P[0, 0] > params.max_P or track.P[1, 1] > params.max_P)):
                 self.delete_track(track)
         
     
